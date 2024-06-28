@@ -1,0 +1,27 @@
+﻿<h3>ApiResult</h3>
+using System.Net.Http;
+
+<table class="table table-sm table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>Usuario</th>
+            <th>Nombre Completo</th>
+            <th>Rol</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Users)
+        {
+            <tr>
+                <td>
+                    <button class="btn btn-link" @onclick="@(e=> GoToEditUser(item.Id))">@item.UserName</button>
+                </td>
+                <td>@item.NombreCompleto</td>
+                <td>@item.RoleName</td>
+            </tr>
+        }
+    </tbody>
+</table>
+@code {
+    var request = new HttpRequestMessage(HttpMethod.Get, "https://mocki.io/v1/0171070f-8802-44a3-b46c-151ca34bf7c5");
+}
